@@ -1,3 +1,5 @@
+import org.w3c.dom.Node;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -23,7 +25,7 @@ public class Player extends Square {
         return new Square(x, y, size);
     }
 
-    public void move(JFrame frame) {
+    public void move(JFrame frame, World currentWorld, NodeQueue enviro, Player player) {
         frame.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -39,9 +41,22 @@ public class Player extends Square {
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
                 switch (keyCode) {
-                    case KeyEvent.VK_UP -> ++y;
-                    case KeyEvent.VK_RIGHT -> ++x;
-                    case KeyEvent.VK_LEFT -> --x;
+                    case KeyEvent.VK_UP:
+                        //need to figure out moving up
+                        if (enviro.getAboveWorld().canStepUp()){
+                            y += 50;
+                        }
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        if (world.canStepRight(player)) {
+                            x += 50;
+                        }
+                        break;
+                    case KeyEvent.VK_LEFT:
+                        if (world.canStepLeft(player)){
+                            x -= 50;
+                        }
+                        break;
                 }
             }
         });

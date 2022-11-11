@@ -30,15 +30,33 @@ public abstract class World extends Rectangle{
     // check if player is in the world
     // if no, who cares,
     // if yes, see if player collides with obstacle of world
-    public boolean checkCollision(Player p) {
-        boolean collision = false;
-        if (checkPlayer(p)) {
-            for (Obstacle obstacle: this.getObstacles()) {
-                collision = p.getBounds2D().intersects(obstacle.getBounds2D());
-                break;
-            }
+//    public boolean checkCollision(Player p) {
+//        boolean collision = false;
+//        if (checkPlayer(p)) {
+//            for (Obstacle obstacle: this.getObstacles()) {
+//                collision = p.getBounds2D().intersects(obstacle.getBounds2D());
+//                break;
+//            }
+//        }
+//        return collision;
+//    }
+
+    public boolean canStepLeft(Player player) {
+        //checks if there is an obstacle to left of player
+        int worldLocation = player.getX() / 50;
+        if (obstacles[worldLocation - 1] == null) {
+            return true;
         }
-        return collision;
+        return false;
+    }
+
+    public boolean canStepRight(Player player) {
+        //checks if there is an obstacle to right of player
+        int worldLocation = player.getX() / 50;
+        if (obstacles[worldLocation + 1] == null) {
+            return true;
+        }
+        return false;
     }
 
     // find if the player is in world
