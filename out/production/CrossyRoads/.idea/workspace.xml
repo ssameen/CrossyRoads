@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7db0352-3123-4e0d-8b8d-6d287abeb771" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Obstacle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Forest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Railroad.java" beforeDir="false" afterPath="$PROJECT_DIR$/Railroad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/River.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/Road.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,14 +41,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="CrossyRoads" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Obstacle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Obstacle" />
       <module name="CrossyRoads" />
@@ -64,7 +51,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Obstacle" />
       </list>
     </recent_temporary>
