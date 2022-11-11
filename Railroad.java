@@ -3,19 +3,25 @@ import java.util.SplittableRandom;
 
 public class Railroad extends World {
     private int nTrain = 1;
-    private int trainXD = 2;
+    private int trainXD = 100;
+    private int trainW = 75;
+    private int trainDirect;
 
     public Railroad() {
         super();
-        this.setBackground(Color.black);
+        this.setBackground(Color.orange);
         this.setObstacles(generateTrain());
+        SplittableRandom rand = new SplittableRandom();
+        int num = rand.nextInt(2);
+        if (num == 0) {trainDirect = 0;}
+        else if (num==1) {trainDirect = 1;}
     }
 
     // create train object
     private Obstacle[] generateTrain() {
         Obstacle[] arrayTrain = new Obstacle[1];
         for (int i = 0; i < nTrain; i ++) {
-            Obstacle train = new Obstacle(); // canStep = false, willDie = true
+            Obstacle train = new Obstacle(-trainW, this.y, trainW , false, true, "TEMP"); // canStep = false, willDie = true
             arrayTrain[i] = train;
         }
         return arrayTrain;
@@ -24,30 +30,30 @@ public class Railroad extends World {
     // move from left to right
     private void moveTrainR() {
         Obstacle train = this.getObstacles()[0];
-        if (train.x >= train.width ) {
-            train.x = 0;
+        int currentX = train.getX();
+        if (currentX >= train.getSize() + this.width) {
+            currentX = 0;
         }
-        train.translate(trainXD, 0);
+        train.setX(currentX += this.trainXD);
     }
 
     // move train from right to left
     private void moveTrainL() {
         Obstacle train = this.getObstacles()[0];
-        trainXD *= -1;
-        if (train.x <= -train.width) {
-            train.x = train.width;
+        int currentX = train.getX();
+        if (currentX <= -train.getSize()) {
+            currentX = this.width;
         }
-        train.translate(trainXD, 0);
+        train.setX(currentX -= this.trainXD);
     }
 
     @Override
     public void moveObstacle() {
-        SplittableRandom rand = new SplittableRandom();
-        int num = rand.nextInt(2);
-        if (num == 0) {
+        super.moveObstacle();
+        if (this.trainDirect == 0) {
             moveTrainR();
         }
-        else if (num==1) {
+        else if (this.trainDirect == 1) {
             moveTrainL();
         }
     }

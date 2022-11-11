@@ -3,50 +3,57 @@ import java.util.SplittableRandom;
 
 public class River extends World {
     private int nObjects = 1;
-    private int logXD = 1;
+    private int logXD = 100;
+    private int logW= 75;
+    private int logDirect;
 
     public River() {
         super();
         this.setBackground(Color.white);
         this.setObstacles(generateLog());
+        SplittableRandom rand = new SplittableRandom();
+        int num = rand.nextInt(2);
+        if (num == 0) {logDirect = 0;}
+        else if (num==1) {logDirect = 1;}
+
     }
 
     private Obstacle[] generateLog() {
         Obstacle[] arrayOb = new Obstacle[nObjects];
         for ( int i = 0; i < nObjects; i++) {
-            Obstacle log = new Obstacle(); // log, willDie = false, canStep = true
+            Obstacle log = new Obstacle(-logW, this.y, logW, true, false, "TEMP"); //  canStep = true, willDie = false
             arrayOb[i] = log;
         }
         return arrayOb;
     }
 
-    //might need to override check-collision
-
     private void moveLogR() {
-        Obstacle log = this.getObstacles()[1];
-        if (log.x >= log.width) {
-            log.x = 0;
+        Obstacle log = this.getObstacles()[0];
+        int currentX = log.getX();
+        if (currentX >= log.getSize() + this.width) {
+            currentX = 0;
         }
-        log.translate(logXD, 0);
+        log.setX(( currentX += this.logXD));
     }
 
     private void moveLogL() {
         Obstacle log = this.getObstacles()[0];
-        logXD *= -1;
-        if (log.x <= -log.width) {
-            log.x = log.width;
+        int currentX = log.getX();
+        if (currentX <= -log.getSize()) {
+            currentX = this.width;
         }
-        log.translate(logXD, 0);
+        log.setX(currentX -= this.logXD);
     }
 
     @Override
     public void moveObstacle() {
+        super.moveObstacle();
         SplittableRandom rand = new SplittableRandom();
         int num = rand.nextInt(2);
-        if (num == 0) {
+        if (this.logDirect == 0) {
             moveLogR();
         }
-        else if (num==1) {
+        else if (this.logDirect == 1) {
             moveLogL();
         }
     }
