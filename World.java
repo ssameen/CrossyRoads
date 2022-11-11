@@ -37,7 +37,7 @@ public abstract class World extends Rectangle{
     public boolean checkCollision(Player p) {
         boolean collision = false;
         for (Obstacle o : this.getObstacles()) {
-            if (o.checkDeath(p)) {
+            if (o != null && o.checkDeath(p)) {
                 collision = true;
             }
         }
