@@ -33,7 +33,7 @@ public abstract class World extends Rectangle{
         }
     }
 
-    // use Obstacle's check collision
+    // use Obstacle's check collision, I haven't checked this at all, let me know if it doesn't work
     public boolean checkCollision(Player p) {
         boolean collision = false;
         for (Obstacle o : this.getObstacles()) {

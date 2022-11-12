@@ -18,6 +18,7 @@ public class River extends World {
 
     }
 
+    // add lof to river
     private Obstacle[] generateLog() {
         Obstacle[] arrayOb = new Obstacle[nObjects];
         for ( int i = 0; i < nObjects; i++) {
@@ -27,6 +28,7 @@ public class River extends World {
         return arrayOb;
     }
 
+    // move from left to right
     private void moveLogR() {
         Obstacle log = this.getObstacles()[0];
         int currentX = log.getX();
@@ -36,6 +38,7 @@ public class River extends World {
         log.setX(( currentX += this.logXD));
     }
 
+    // move from right to left
     private void moveLogL() {
         Obstacle log = this.getObstacles()[0];
         int currentX = log.getX();
@@ -46,6 +49,7 @@ public class River extends World {
     }
 
     @Override
+    // each River world randomly have log moving left or right
     public void moveObstacle() {
         super.moveObstacle();
         SplittableRandom rand = new SplittableRandom();

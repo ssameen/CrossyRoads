@@ -17,7 +17,7 @@ public class Road extends World {
         else if (num==1) {carDirect = 1;}
 
     }
-
+    // add a car to road
     private Obstacle[] generateCar() {
         Obstacle[] arrayCar = new Obstacle[nCar];
         for (int i = 0; i < nCar; i ++) {
@@ -48,7 +48,7 @@ public class Road extends World {
     }
 
     @Override
-    // each world randomly have car moving left or right
+    // each Road world randomly have car moving left or right
     public void moveObstacle() {
         super.moveObstacle();
         if (this.carDirect == 0) {

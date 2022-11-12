@@ -17,7 +17,7 @@ public class Railroad extends World {
         else if (num==1) {trainDirect = 1;}
     }
 
-    // create train object
+    // add train to Railroad
     private Obstacle[] generateTrain() {
         Obstacle[] arrayTrain = new Obstacle[1];
         for (int i = 0; i < nTrain; i ++) {
@@ -48,6 +48,7 @@ public class Railroad extends World {
     }
 
     @Override
+    // each Railroad world randomly have train moving left or right
     public void moveObstacle() {
         super.moveObstacle();
         if (this.trainDirect == 0) {
