@@ -1,17 +1,20 @@
 import java.awt.*;
-import java.util.Queue;
 
 public abstract class World extends Rectangle{
     private Obstacle[] obstacles;
     private Color background;
 
     public World() {
-        this.width = 500;
+        // assuming frame is 600x600, so height is 630 to include the bar on top
+        // world height = 100
+        // start each world at the bottom of screen, so 630 -100
+        this.y = 630 - 100;
+        this.width = 600;
         this.height = 100;
     }
 
     // set obstacles
-    public void setObstacles(Obstacle[] obstacles) {this.obstacles = obstacles;}
+    protected void setObstacles(Obstacle[] obstacles) {this.obstacles = obstacles;}
 
     // get obstacles
     public Obstacle[] getObstacles() {return obstacles;}
@@ -24,26 +27,24 @@ public abstract class World extends Rectangle{
     // get color for world
     public Color getBackground() {return background;}
 
-    // move obstacle in the queue
-    public void moveObstacle() {}
+    // move obstacles along with world, and override to move obstacle horizontally in subclasses if needed
+    public void moveObstacle() {
+        for (Obstacle o : this.getObstacles()) {
+            if (o != null) {
+                o.setY(this.y + 15);
+            }
+        }
+    }
 
-    // check if player is in the world
-    // if no, who cares,
-    // if yes, see if player collides with obstacle of world
+    // use Obstacle's check collision, I haven't checked this at all, let me know if it doesn't work
     public boolean checkCollision(Player p) {
         boolean collision = false;
-        if (checkPlayer(p)) {
-            for (Obstacle obstacle: this.getObstacles()) {
-                collision = p.getBounds2D().intersects(obstacle.getBounds2D());
-                break;
+        for (Obstacle o : this.getObstacles()) {
+            if (o != null && o.checkDeath(p)) {
+                collision = true;
             }
         }
         return collision;
     }
 
-    // find if the player is in world
-    public boolean checkPlayer(Player p) {
-        return this.contains(p);
-    }
 }
-=======

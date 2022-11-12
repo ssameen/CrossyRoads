@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7db0352-3123-4e0d-8b8d-6d287abeb771" name="Changes" comment="This should be the base structure for the game class - I added a test main as well. There's just some connections to be made between classes when we are fully integrating everything.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+    <list default="true" id="b7db0352-3123-4e0d-8b8d-6d287abeb771" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
