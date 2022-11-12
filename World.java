@@ -5,6 +5,9 @@ public abstract class World extends Rectangle{
     private Color background;
 
     public World() {
+        // assuming frame is 600x600, so height is 630 to include the bar on top
+        // world height = 100
+        // start each world at the bottom of screen, so 630 -100
         this.y = 630 - 100;
         this.width = 600;
         this.height = 100;
