@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Game extends JComponent implements KeyListener {
     Random rand = new Random();
     static Boolean death = false;
-    Player chicken = new Player(365,550, 75,);
+    Player chicken = new Player(365,550, 75, "test");
     static int score = 0;
     static int position = 0;
     NodeQueue enviro = new NodeQueue();
@@ -22,7 +22,7 @@ public class Game extends JComponent implements KeyListener {
         g2.setStroke(new BasicStroke(3));
         paintWorlds(g2);
         scoreText(g2);
-
+        paintObstacles(g2);
     }
     public void playerPaint(Graphics2D g2){
 
@@ -38,7 +38,7 @@ public class Game extends JComponent implements KeyListener {
         for(int i =0; i < enviro.getSize(); i++){
             World now = enviro.check(i);
             g2.setColor(now.getBackground());
-            g2.fillRect(now.x+100, enviro.getSize()*now.height-(i*50)+100, now.width, now.height);
+            g2.fillRect(now.x, enviro.getSize()*now.height-(i*100)+100, now.width, now.height);
 
         }
     }
@@ -46,7 +46,14 @@ public class Game extends JComponent implements KeyListener {
     void paintObstacles(Graphics2D g2){
         for(int i =0; i < enviro.getSize(); i++){
             World now = enviro.check(i);
-            Obstacle[] obs = now.getObstacles();
+
+                Obstacle[] obs = now.getObstacles();
+                for (Obstacle o : obs) {
+                    if(!(o==null)) {
+                        g2.setColor(Color.darkGray);
+                        g2.fillRect(o.getX(), enviro.getSize() * now.height - (i * 100) + 125, 50, 50);
+                    }
+                    }
 
         }
     }
@@ -103,7 +110,7 @@ public class Game extends JComponent implements KeyListener {
 
     public static void main(String[] args) throws InterruptedException {
         JFrame frame = new JFrame();
-        frame.setSize(730, 600);
+        frame.setSize(600, 850);
         frame.setLocation(0, 0);
         Game g = new Game();
         frame.add(g);
@@ -113,16 +120,16 @@ public class Game extends JComponent implements KeyListener {
 
         g.run();
     }
-    private void playerUp() {
+   /* private void playerUp() {
         if(!obsAbove()) {
             chicken.moveUp();
             position++;
             score++;
             this.repaint();
         }
-    }
+    }*/
 
-    private boolean obsAbove(){
+    /*private boolean obsAbove(){
         World above = enviro.check(position +1);
         Obstacle[] obs = above.getObstacles();
         for(Obstacle o: obs){
@@ -136,7 +143,7 @@ public class Game extends JComponent implements KeyListener {
             }
         }
         return false;
-    }
+    }*/
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -146,7 +153,7 @@ public class Game extends JComponent implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int KeyCode = e.getKeyCode();
         if(KeyCode == KeyEvent.VK_UP){
-            playerUp();
+            //playerUp();
 
         }
     }
