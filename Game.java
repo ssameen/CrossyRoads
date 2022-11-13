@@ -11,6 +11,7 @@ public class Game extends JComponent implements KeyListener {
     static Boolean death = false;
     Player chicken = new Player(300,550, 75, "test");
     static int score = 0;
+    static int lastWorld=0;
     static int position = 0;
     NodeQueue enviro = new NodeQueue();
 
@@ -25,8 +26,23 @@ public class Game extends JComponent implements KeyListener {
             scoreText(g2);
             paintObstacles(g2);
             playerPaint(g2);
+        }else{
+            paintDeath(g2);
         }
     }
+
+    private void paintDeath(Graphics2D g2) {
+        g2.setColor(Color.black);
+        Font f = new Font(Font.SERIF, Font.BOLD, 120);
+        g2.setFont(f);
+
+        g2.drawString("You Scored", 0, 300);
+        f = new Font(Font.SERIF, Font.BOLD, 200);
+        g2.setFont(f);
+        g2.drawString(""+score, 250, 550);
+
+    }
+
     public void playerPaint(Graphics2D g2){
         g2.setColor(Color.red);
         g2.fillRect(chicken.getX(), enviro.getSize()*100-(position*100)+125, 50, 50);
@@ -67,7 +83,7 @@ public class Game extends JComponent implements KeyListener {
         setFocusable(true);
         requestFocus();
         for(int i =0; i<6;i++){
-            World next = newWorld();
+            World next = newWorld(lastWorld);
             enviro.enqueue(next);
         }
 
@@ -86,7 +102,7 @@ public class Game extends JComponent implements KeyListener {
 
 
         enviro.dequeue();
-        World next = newWorld();
+        World next = newWorld(lastWorld);
         enviro.enqueue(next);
         position--;
         moveObjects();
@@ -105,16 +121,20 @@ public class Game extends JComponent implements KeyListener {
         }
     }
 
-    World newWorld(){
+    World newWorld(int i){
         World next;
-        if(rand.nextInt(4)==0){
+        lastWorld = rand.nextInt(4);
+        if(lastWorld==0){
             next = new Road();
-        }else if(rand.nextInt(4) == 1){
+        }else if(lastWorld == 1){
             next = new Forest();
-        }else if(rand.nextInt(4)==2){
+        }else if(lastWorld==2){
             next = new Railroad();
         }else{
             next = new River();
+        }
+        if(lastWorld==i){
+            next = newWorld(i);
         }
         return next;
     }

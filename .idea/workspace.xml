@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="working on player movement">
+    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="cleaned up movement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668372634637</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="cleaned up movement">
+      <created>1668380388298</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668380388298</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,7 +117,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Player now moves up and increments score" />
     <MESSAGE value="working on player movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on player movement" />
+    <MESSAGE value="cleaned up movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned up movement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
