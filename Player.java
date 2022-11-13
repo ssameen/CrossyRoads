@@ -8,7 +8,11 @@ public class Player extends Square {
 
     public Player(int x, int y, int size, String imagePath) {
         super(x, y, size);
+        this.x = x;
         this.imagePath = imagePath;
+    }
+    public void changeX(int d){
+        this.x += d;
     }
 
     public int getX() {

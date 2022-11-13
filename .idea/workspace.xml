@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="few updates -- ready to hook up to obstacle classes once that's all figured out.">
+    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="Player now moves up and increments score">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Forest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Forest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Obstacle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Railroad.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Railroad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/River.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/River.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +81,14 @@
       <option name="presentableId" value="Default" />
       <updated>1668016674568</updated>
     </task>
+    <task id="LOCAL-00001" summary="Player now moves up and increments score">
+      <created>1668301139558</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668301139558</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,5 +101,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Player now moves up and increments score" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player now moves up and increments score" />
   </component>
 </project>

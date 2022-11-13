@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Game extends JComponent implements KeyListener {
     Random rand = new Random();
     static Boolean death = false;
-    Player chicken = new Player(400,550, 75, "test");
+    Player chicken = new Player(300,550, 75, "test");
     static int score = 0;
     static int position = 0;
     NodeQueue enviro = new NodeQueue();
@@ -115,7 +115,7 @@ public class Game extends JComponent implements KeyListener {
 
     public static void main(String[] args) throws InterruptedException {
         JFrame frame = new JFrame();
-        frame.setSize(600, 850);
+        frame.setSize(610, 850);
         frame.setLocation(0, 0);
         Game g = new Game();
 
@@ -128,34 +128,48 @@ public class Game extends JComponent implements KeyListener {
     }
     private void playerUp() {
 
+            if(!obsAbove()) {
+                position++;
+                score++;
+                this.repaint();
+            }
+    }
 
-            position++;
-            score++;
-            this.repaint();
+    private void playerRight(){
 
     }
 
-    /*private boolean obsAbove(){
+    private void playerLeft(){
+
+    }
+
+    private boolean obsAbove(){
         World above = enviro.check(position +1);
         Obstacle[] obs = above.getObstacles();
         for(Obstacle o: obs){
-            int[] values = new int[2];
-            values[0] = o.getBottomLeft[0];
-            values[1] = o.getTopRight[0];
-            if(chicken.getTopRight()[0] <= values[1]&&chicken.getTopRight()[0]>=values[0]){
-                return true;
-            }else if(chicken.getBottomLeft()[0] <= values[1]&&chicken.getBottomLeft()[0]>=values[0]){
-                return true;
+            if(!(o==null)) {
+                int[] values = new int[2];
+                values[0] = o.getX();
+                values[1] = o.getX()+o.getSize();
+                if (chicken.getTopRight()[0] <= values[1] && chicken.getTopRight()[0] >= values[0]) {
+                    return true;
+                } else if (chicken.getBottomLeft()[0] <= values[1] && chicken.getBottomLeft()[0] >= values[0]) {
+                    return true;
+                }
             }
         }
         return false;
-    }*/
+    }
     @Override
     public void keyTyped(KeyEvent e) {
 
         if(e.getKeyChar() == 'w' && position < 7){
             playerUp();
 
+        } else if (e.getKeyChar() == 'a'&& chicken.getX()>25) {
+           // playerLeft();
+        } else if (e.getKeyChar() == 'd'&&chicken.getX()<575) {
+            //playerRight();
         }
     }
 
