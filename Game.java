@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class Game extends JComponent implements KeyListener {
     Random rand = new Random();
     static Boolean death = false;
-    Player chicken = new Player(365,550, 75, "test");
+    Player chicken = new Player(400,550, 75, "test");
     static int score = 0;
     static int position = 0;
     NodeQueue enviro = new NodeQueue();
@@ -23,9 +23,11 @@ public class Game extends JComponent implements KeyListener {
         paintWorlds(g2);
         scoreText(g2);
         paintObstacles(g2);
+        playerPaint(g2);
     }
     public void playerPaint(Graphics2D g2){
-
+        g2.setColor(Color.red);
+        g2.fillRect(chicken.getX(), enviro.getSize()*100-(position*100)+125, 50, 50);
     }
 
     public void scoreText(Graphics2D g2){
@@ -59,6 +61,9 @@ public class Game extends JComponent implements KeyListener {
     }
 
     public Game(){
+        this.addKeyListener(this);
+        setFocusable(true);
+        requestFocus();
         for(int i =0; i<6;i++){
             World next = newWorld();
             enviro.enqueue(next);
@@ -113,6 +118,7 @@ public class Game extends JComponent implements KeyListener {
         frame.setSize(600, 850);
         frame.setLocation(0, 0);
         Game g = new Game();
+
         frame.add(g);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -120,14 +126,14 @@ public class Game extends JComponent implements KeyListener {
 
         g.run();
     }
-   /* private void playerUp() {
-        if(!obsAbove()) {
-            chicken.moveUp();
+    private void playerUp() {
+
+
             position++;
             score++;
             this.repaint();
-        }
-    }*/
+
+    }
 
     /*private boolean obsAbove(){
         World above = enviro.check(position +1);
@@ -147,15 +153,15 @@ public class Game extends JComponent implements KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
+        if(e.getKeyChar() == 'w' && position < 7){
+            playerUp();
+
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int KeyCode = e.getKeyCode();
-        if(KeyCode == KeyEvent.VK_UP){
-            //playerUp();
 
-        }
     }
 
 
