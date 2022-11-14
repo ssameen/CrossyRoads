@@ -9,6 +9,7 @@ public class River extends World {
 
     public River(double initialHeight) {
         super(initialHeight);
+        this.setDanger(true);
         this.setBackground(Color.blue);
         this.setObstacles(generateLog());
         SplittableRandom rand = new SplittableRandom();

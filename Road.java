@@ -9,6 +9,7 @@ public class Road extends World {
 
     public Road(double initialHeight) {
         super(initialHeight);
+        this.setDanger(false);
         this.setBackground(Color.lightGray);
         this.setObstacles(generateCar());
         SplittableRandom rand = new SplittableRandom();

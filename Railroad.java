@@ -9,6 +9,7 @@ public class Railroad extends World {
 
     public Railroad(double initialHeight) {
         super(initialHeight);
+        this.setDanger(false);
         this.setBackground(Color.orange);
         this.setObstacles(generateTrain());
         SplittableRandom rand = new SplittableRandom();
