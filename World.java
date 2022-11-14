@@ -3,12 +3,21 @@ import java.awt.*;
 public abstract class World extends Rectangle{
     private Obstacle[] obstacles;
     private Color background;
+    private boolean danger;
     int y;
 
     public World(double initialHeight) {
         this.y = (int) initialHeight * 100;
         this.width = 600;
         this.height = 100;
+    }
+
+    public boolean isDanger() {
+        return danger;
+    }
+
+    public void setDanger(boolean danger) {
+        this.danger = danger;
     }
 
     public void changeY(int y) {
