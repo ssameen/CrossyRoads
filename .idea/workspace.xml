@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="added death from being too slow">
-      <change afterPath="$PROJECT_DIR$/Icons/tracks.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
