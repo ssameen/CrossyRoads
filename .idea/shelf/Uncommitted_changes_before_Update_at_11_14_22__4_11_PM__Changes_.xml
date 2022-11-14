@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_11_14_22,_4_11_PM_[Changes]" date="1668467472463" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_22,_4_11_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/14/22, 4:11 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/CrossyRoads/Game.class" />
+    <option name="AFTER_PATH" value="out/production/CrossyRoads/Game.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_22,_4_11_PM_[Changes]/Game.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="Icons/forest.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_22,_4_11_PM_[Changes]/forest.png" />
+  </binary>
+</changelist>
