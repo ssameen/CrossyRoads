@@ -1,10 +1,7 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -91,6 +88,9 @@ public class Game extends JComponent implements KeyListener {
         score = 0;
         while(!death){
             TimeUnit.SECONDS.sleep(3);
+            if(death){
+                break;
+            }
             tick();
 
         }
@@ -102,21 +102,38 @@ public class Game extends JComponent implements KeyListener {
         enviro.enqueue(next);
         playerPosition--;
         chicken.changeY(100);
+        if(enviro.check(playerPosition).isDanger()&&touch()){
+            if(enviro.check(playerPosition).rMove()==0) {
+                chicken.changeX(100);
+            }else{
+                chicken.changeX(-100);
+            }
+        }
         moveObjects();
         setDeath();
+
         this.repaint();
         if(playerPosition <0){
             death= true;
         }
+
+    }
+
+    public boolean touch(){
+        for (Obstacle obstacle: enviro.check(playerPosition).getObstacles()) {
+            return obstacle != null && obstacle.checkCollision(chicken);
+        }
+        return false;
     }
 
     public void setDeath() {
-        for (Obstacle obstacle: enviro.check(playerPosition).getObstacles()) {
-            if (obstacle != null && obstacle.checkDeath(chicken)){
-                death = true;
-                break;
+        if(!enviro.check(playerPosition).isDanger()) {
+            for (Obstacle obstacle : enviro.check(playerPosition).getObstacles()) {
+                if (obstacle != null && obstacle.checkDeath(chicken)) {
+                    death = true;
+                    break;
+                } else death = false;
             }
-            else death = false;
         }
     }
 
@@ -247,6 +264,9 @@ public class Game extends JComponent implements KeyListener {
             playerLeft();
         } else if (e.getKeyChar() == 'd'&&chicken.getX()<500) {
             playerRight();
+        }
+        if(enviro.check(playerPosition).isDanger()&&!touch()){
+            death=true;
         }
     }
 

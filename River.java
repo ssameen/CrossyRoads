@@ -18,6 +18,8 @@ public class River extends World {
         else if (num==1) {logDirect = 1;}
     }
 
+    public int rMove(){return logDirect;}
+
     // add log to river
     private Obstacle[] generateLog() {
         Obstacle[] arrayOb = new Obstacle[nObjects];
