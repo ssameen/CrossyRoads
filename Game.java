@@ -183,7 +183,7 @@ public class Game extends JComponent implements KeyListener {
         World here = enviro.check(position);
         Obstacle[] obs = here.getObstacles();
         for (Obstacle o: obs){
-            if(!(o==null)){
+            if(!(o==null)&&!o.isCanStep()){
                 if(o.getX()<=chicken.getX()+100&&o.getX()>=chicken.getX()+50){
                     return true;
                 }
@@ -195,7 +195,7 @@ public class Game extends JComponent implements KeyListener {
         World here = enviro.check(position);
         Obstacle[] obs = here.getObstacles();
         for (Obstacle o: obs){
-            if(!(o==null)){
+            if(!(o==null)&&!o.isCanStep()){
                 if(o.getX()+50>=chicken.getX()-50&&o.getX()+50<=chicken.getX()){
                     return true;
                 }
@@ -207,7 +207,7 @@ public class Game extends JComponent implements KeyListener {
         World above = enviro.check(position +1);
         Obstacle[] obs = above.getObstacles();
         for(Obstacle o: obs){
-            if(!(o==null)) {
+            if(!(o==null)&&!o.isCanStep()) {
                 int[] values = new int[2];
                 values[0] = o.getX();
                 values[1] = o.getX()+o.getSize();

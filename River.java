@@ -9,7 +9,7 @@ public class River extends World {
 
     public River() {
         super();
-        this.setBackground(Color.white);
+        this.setBackground(Color.blue);
         this.setObstacles(generateLog());
         SplittableRandom rand = new SplittableRandom();
         int num = rand.nextInt(2);

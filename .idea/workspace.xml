@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="cleaned up movement">
+    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="added death from being too slow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Obstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/River.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668380388298</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added death from being too slow">
+      <created>1668381471971</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668381471971</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,7 +127,8 @@
     <MESSAGE value="Player now moves up and increments score" />
     <MESSAGE value="working on player movement" />
     <MESSAGE value="cleaned up movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up movement" />
+    <MESSAGE value="added death from being too slow" />
+    <option name="LAST_COMMIT_MESSAGE" value="added death from being too slow" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

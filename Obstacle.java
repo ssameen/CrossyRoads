@@ -16,6 +16,14 @@ public class Obstacle{
         return x;
     }
 
+    public boolean isCanStep() {
+        return canStep;
+    }
+
+    public boolean isWillDie() {
+        return willDie;
+    }
+
     public void setX(int x) {
         this.x = x;
     }
