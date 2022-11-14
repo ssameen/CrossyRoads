@@ -1,18 +1,20 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-
 public class Game extends JComponent implements KeyListener {
     Random rand = new Random();
-    static Boolean death = false;
-    Player chicken = new Player(300,550, 75, "test");
+    boolean death = false;
+    Player chicken = new Player(400,550, 100, "test");
     static int score = 0;
-    static int lastWorld=0;
-    static int position = 0;
+    static int lastWorld = 0;
+    static int playerPosition = 0;
     NodeQueue enviro = new NodeQueue();
 
     @Override
@@ -40,12 +42,11 @@ public class Game extends JComponent implements KeyListener {
         f = new Font(Font.SERIF, Font.BOLD, 200);
         g2.setFont(f);
         g2.drawString(""+score, 250, 550);
-
     }
 
     public void playerPaint(Graphics2D g2){
         g2.setColor(Color.red);
-        g2.fillRect(chicken.getX(), enviro.getSize()*100-(position*100)+125, 50, 50);
+        g2.fillRect(chicken.getX(), enviro.getSize()*100-(playerPosition*100)+100, 100, 100);
     }
 
     public void scoreText(Graphics2D g2){
@@ -59,22 +60,20 @@ public class Game extends JComponent implements KeyListener {
             World now = enviro.check(i);
             g2.setColor(now.getBackground());
             g2.fillRect(now.x, enviro.getSize()*now.height-(i*100)+100, now.width, now.height);
-
         }
     }
 
     void paintObstacles(Graphics2D g2){
-        for(int i =0; i < enviro.getSize(); i++){
+        for(int i = 0; i < enviro.getSize(); i++){
             World now = enviro.check(i);
 
-                Obstacle[] obs = now.getObstacles();
-                for (Obstacle o : obs) {
-                    if(!(o==null)) {
-                        g2.setColor(Color.darkGray);
-                        g2.fillRect(o.getX(), enviro.getSize() * now.height - (i * 100) + 125, 50, 50);
-                    }
-                    }
-
+            Obstacle[] obs = now.getObstacles();
+            for (Obstacle o : obs) {
+                if(!(o==null)) {
+                    g2.setColor(Color.darkGray);
+                    g2.fillRect(o.getX(), enviro.getSize() * now.height - (i * 100) + 100, 100, 100);
+                }
+            }
         }
     }
 
@@ -83,10 +82,9 @@ public class Game extends JComponent implements KeyListener {
         setFocusable(true);
         requestFocus();
         for(int i =0; i<6;i++){
-            World next = newWorld(lastWorld);
+            World next = newWorld(lastWorld, 5.5 - i);
             enviro.enqueue(next);
         }
-
     }
 
     void run() throws InterruptedException {
@@ -99,49 +97,57 @@ public class Game extends JComponent implements KeyListener {
     }
 
     void tick(){
-
-
         enviro.dequeue();
-        World next = newWorld(lastWorld);
+        World next = newWorld(lastWorld, 6);
         enviro.enqueue(next);
-        position--;
+        playerPosition--;
+        chicken.changeY(100);
         moveObjects();
-
+        setDeath();
         this.repaint();
-        if(position <0){
+        if(playerPosition <0){
             death= true;
         }
     }
 
-    void moveObjects(){
-        for(int i =0; i < enviro.getSize(); i++){
-            World now = enviro.check(i);
+    public void setDeath() {
+        for (Obstacle obstacle: enviro.check(playerPosition).getObstacles()) {
+            if (obstacle != null && obstacle.checkDeath(chicken)){
+                death = true;
+                break;
+            }
+            else death = false;
+        }
+    }
 
+    void moveObjects(){
+        for(int i = 0; i < enviro.getSize(); i++){
+            World now = enviro.check(i);
             now.moveObstacle();
         }
     }
 
-    World newWorld(int i){
+    World newWorld(int i, double initialHeight){
         World next;
         lastWorld = rand.nextInt(4);
-        if(lastWorld==0){
-            next = new Road();
+        if(lastWorld == 0){
+            next = new Road(initialHeight);
         }else if(lastWorld == 1){
-            next = new Forest();
-        }else if(lastWorld==2){
-            next = new Railroad();
+            next = new Forest(initialHeight);
+        }else if(lastWorld == 2){
+            next = new Railroad(initialHeight);
         }else{
-            next = new River();
+            next = new River(initialHeight);
         }
-        if(lastWorld==i){
-            next = newWorld(i);
+        if(lastWorld == i){
+            next = newWorld(i, initialHeight);
         }
         return next;
     }
 
     public static void main(String[] args) throws InterruptedException {
         JFrame frame = new JFrame();
-        frame.setSize(610, 850);
+        frame.setSize(600, 850);
         frame.setLocation(0, 0);
         Game g = new Game();
 
@@ -152,19 +158,23 @@ public class Game extends JComponent implements KeyListener {
 
         g.run();
     }
+
     private void playerUp() {
-        if(position<5) {
+        if(playerPosition<5) {
             if (!obsAbove()) {
-                position++;
+                playerPosition++;
                 score++;
+                chicken.changeY(-100);
                 this.repaint();
+            }else {
+                System.out.println("no");
             }
         }
     }
 
     private void playerRight(){
         if(!obsRight()) {
-            chicken.changeX(50);
+            chicken.changeX(100);
             this.repaint();
         }else {
             System.out.println("no");
@@ -173,62 +183,69 @@ public class Game extends JComponent implements KeyListener {
 
     private void playerLeft(){
         if(!obsLeft()) {
-            chicken.changeX(-50);
+            chicken.changeX(-100);
             this.repaint();
         }else {
             System.out.println("no");
         }
     }
+
     private boolean obsRight(){
-        World here = enviro.check(position);
+        boolean check = false;
+        World here = enviro.check(playerPosition);
         Obstacle[] obs = here.getObstacles();
         for (Obstacle o: obs){
-            if(!(o==null)&&!o.isCanStep()){
-                if(o.getX()<=chicken.getX()+100&&o.getX()>=chicken.getX()+50){
-                    return true;
+            if(!(o==null)&&!o.getCanStep()){
+                if(chicken.getX() + 100 >= o.getX() + 100 || o.getX() >= chicken.getX() + 200) check = false;
+                else {
+                    check = true;
+                    break;
                 }
             }
         }
-        return false;
+        return check;
     }
+
     private boolean obsLeft(){
-        World here = enviro.check(position);
+        boolean check = false;
+        World here = enviro.check(playerPosition);
         Obstacle[] obs = here.getObstacles();
         for (Obstacle o: obs){
-            if(!(o==null)&&!o.isCanStep()){
-                if(o.getX()+50>=chicken.getX()-50&&o.getX()+50<=chicken.getX()){
-                    return true;
+            if(!(o==null)&&!o.getCanStep()){
+                if(chicken.getX() - 100 >= o.getX() + 100 || o.getX() >= chicken.getX()) check = false;
+                else {
+                    check = true;
+                    break;
                 }
             }
         }
-        return false;
+        return check;
     }
+
+    // if chicken bottom >= obs top || obs bottom >= chicken top
     private boolean obsAbove(){
-        World above = enviro.check(position +1);
+        boolean check = false;
+        World above = enviro.check(playerPosition + 1);
         Obstacle[] obs = above.getObstacles();
         for(Obstacle o: obs){
-            if(!(o==null)&&!o.isCanStep()) {
-                int[] values = new int[2];
-                values[0] = o.getX();
-                values[1] = o.getX()+o.getSize();
-                if (chicken.getX()+50 <= values[1] && chicken.getX()+50 >= values[0]) {
-                    return true;
-                } else if (chicken.getX() <= values[1] && chicken.getX() >= values[0]) {
-                    return true;
+            if(!(o==null)&&!o.getCanStep()) {
+                if(chicken.getX() >= o.getX() + 100 || o.getX() >= chicken.getX() + 100) check = false;
+                else {
+                    check = true;
+                    break;
                 }
             }
         }
-        return false;
+        return check;
     }
+
     @Override
     public void keyTyped(KeyEvent e) {
-
-        if(e.getKeyChar() == 'w' && position < 7){
+        if(e.getKeyChar() == 'w' && playerPosition < 7){
             playerUp();
-
-        } else if (e.getKeyChar() == 'a'&& chicken.getX()>25) {
+        } else if (e.getKeyChar() == 'a'&& chicken.getX()>0) {
             playerLeft();
-        } else if (e.getKeyChar() == 'd'&&chicken.getX()<550) {
+        } else if (e.getKeyChar() == 'd'&&chicken.getX()<500) {
             playerRight();
         }
     }
@@ -237,8 +254,6 @@ public class Game extends JComponent implements KeyListener {
     public void keyPressed(KeyEvent e) {
 
     }
-
-
 
     @Override
     public void keyReleased(KeyEvent e) {

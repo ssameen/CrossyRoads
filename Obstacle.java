@@ -16,11 +16,11 @@ public class Obstacle{
         return x;
     }
 
-    public boolean isCanStep() {
+    public boolean getCanStep() {
         return canStep;
     }
 
-    public boolean isWillDie() {
+    public boolean getWillDie() {
         return willDie;
     }
 
@@ -51,11 +51,8 @@ public class Obstacle{
     private boolean checkCollision(Player player){
         Square playerSquare = player.getSquare();
         Square obstacleSquare = this.getSquare();
-        int x1 = playerSquare.getBottomLeft()[0], y1 = playerSquare.getBottomLeft()[1];
-        int x2 = playerSquare.getTopRight()[0], y2 = playerSquare.getTopRight()[1];
-        int x3 = obstacleSquare.getBottomLeft()[0], y3 = obstacleSquare.getBottomLeft()[1];
-        int x4 = obstacleSquare.getTopRight()[0], y4 = obstacleSquare.getTopRight()[1];
-        return (x1 < x4) && (x3 < x2) && (y1 < y4) && (y3 < y2);
+        if (playerSquare.getTopLeft()[0] == obstacleSquare.getTopLeft()[0]) return true;
+        else return false;
     }
 
     public boolean checkDeath(Player player){

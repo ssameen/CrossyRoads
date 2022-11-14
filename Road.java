@@ -4,19 +4,19 @@ import java.util.SplittableRandom;
 public class Road extends World {
     private int nCar = 1;
     private int carXD = 100;
-    private int carW = 75;
+    private int carW = 100;
     private int carDirect;
 
-    public Road() {
-        super();
+    public Road(double initialHeight) {
+        super(initialHeight);
         this.setBackground(Color.lightGray);
         this.setObstacles(generateCar());
         SplittableRandom rand = new SplittableRandom();
         int num = rand.nextInt(2);
         if (num == 0) {carDirect = 0;}
-        else if (num==1) {carDirect = 1;}
-
+        else if (num == 1) {carDirect = 1;}
     }
+
     // add a car to road
     private Obstacle[] generateCar() {
         Obstacle[] arrayCar = new Obstacle[nCar];

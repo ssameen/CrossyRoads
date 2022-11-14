@@ -4,10 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="few updates -- ready to hook up to obstacle classes once that's all figured out.">
+    <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="added death from being too slow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Forest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Forest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Road.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Road.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Obstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Railroad.java" beforeDir="false" afterPath="$PROJECT_DIR$/Railroad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/River.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/Road.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Forest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Forest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Obstacle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Obstacle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +86,41 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b7db0352-3123-4e0d-8b8d-6d287abeb771" name="Changes" comment="" />
+      <changelist id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="few updates -- ready to hook up to obstacle classes once that's all figured out." />
       <created>1668016674568</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668016674568</updated>
     </task>
+    <task id="LOCAL-00001" summary="Player now moves up and increments score">
+      <created>1668301139558</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668301139558</updated>
+    </task>
+    <task id="LOCAL-00002" summary="working on player movement">
+      <created>1668372634637</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668372634637</updated>
+    </task>
+    <task id="LOCAL-00003" summary="cleaned up movement">
+      <created>1668380388298</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668380388298</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added death from being too slow">
+      <created>1668381471971</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668381471971</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,13 +134,24 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Player now moves up and increments score" />
+    <MESSAGE value="working on player movement" />
+    <MESSAGE value="cleaned up movement" />
+    <MESSAGE value="added death from being too slow" />
+    <option name="LAST_COMMIT_MESSAGE" value="added death from being too slow" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="11" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Game.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="4" />
+          <line>112</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

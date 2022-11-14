@@ -4,21 +4,20 @@ import java.util.SplittableRandom;
 public class River extends World {
     private int nObjects = 1;
     private int logXD = 100;
-    private int logW= 75;
+    private int logW= 100;
     private int logDirect;
 
-    public River() {
-        super();
+    public River(double initialHeight) {
+        super(initialHeight);
         this.setBackground(Color.blue);
         this.setObstacles(generateLog());
         SplittableRandom rand = new SplittableRandom();
         int num = rand.nextInt(2);
         if (num == 0) {logDirect = 0;}
         else if (num==1) {logDirect = 1;}
-
     }
 
-    // add lof to river
+    // add log to river
     private Obstacle[] generateLog() {
         Obstacle[] arrayOb = new Obstacle[nObjects];
         for ( int i = 0; i < nObjects; i++) {

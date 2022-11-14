@@ -4,6 +4,7 @@ public class Square {
     private int x;
     private int y;
     private int size;
+
     public Square(int x, int y, int size){
         this.x = x;
         this.y = y;
@@ -14,11 +15,11 @@ public class Square {
         g.drawRect(x, y, size, size);
     }
 
-    public int[] getTopRight() {
-        return new int[]{x+size, y};
+    public int[] getTopLeft() {
+        return new int[]{x, y};
     }
 
-    public int[] getBottomLeft() {
-        return new int[]{x, y+size};
+    public int[] getBottomRight() {
+        return new int[]{x + size, y + size};
     }
 }

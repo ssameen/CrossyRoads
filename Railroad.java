@@ -4,11 +4,11 @@ import java.util.SplittableRandom;
 public class Railroad extends World {
     private int nTrain = 1;
     private int trainXD = 100;
-    private int trainW = 75;
+    private int trainW = 100;
     private int trainDirect;
 
-    public Railroad() {
-        super();
+    public Railroad(double initialHeight) {
+        super(initialHeight);
         this.setBackground(Color.orange);
         this.setObstacles(generateTrain());
         SplittableRandom rand = new SplittableRandom();
@@ -21,7 +21,7 @@ public class Railroad extends World {
     private Obstacle[] generateTrain() {
         Obstacle[] arrayTrain = new Obstacle[1];
         for (int i = 0; i < nTrain; i ++) {
-            Obstacle train = new Obstacle(-trainW, this.y, trainW , false, true, "TEMP"); // canStep = false, willDie = true
+            Obstacle train = new Obstacle(-trainW, this.y, trainW, false, true, "TEMP"); // canStep = false, willDie = true
             arrayTrain[i] = train;
         }
         return arrayTrain;

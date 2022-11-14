@@ -4,11 +4,10 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Forest extends World {
-    private int treeSize = 75;
+    private int treeSize = 100;
 
-
-    public Forest() {
-        super();
+    public Forest(double initialHeight) {
+        super(initialHeight);
         this.setBackground(Color.green);
         this.setObstacles(generateTrees());
     }
@@ -26,13 +25,11 @@ public class Forest extends World {
         Collections.shuffle(Arrays.asList(positionX));
         // generate random number of trees and position each tree using positionX random array
         Random rand = new Random();
+        //make between 3 and 5 trees
         for (int i = 0; i < rand.nextInt(3,this.width/100); i++) {
-            Obstacle tree = new Obstacle(positionX[i] * 100 + treeSize/2, this.y - treeSize/2, treeSize, false, false, "TEMP"); // canStep = false, willDie = false
+            Obstacle tree = new Obstacle(positionX[i] * 100, this.y, treeSize, false, false, "TEMP"); // canStep = false, willDie = false
             ObstacleArray[i] = tree;
-
         }
         return ObstacleArray;
     }
-
-
 }
