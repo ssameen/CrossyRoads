@@ -48,7 +48,7 @@ public class Obstacle{
         return new Square(x, y, size);
     }
 
-    private boolean checkCollision(Player player){
+    public boolean checkCollision(Player player){
         Square playerSquare = player.getSquare();
         Square obstacleSquare = this.getSquare();
         if (playerSquare.getTopLeft()[0] == obstacleSquare.getTopLeft()[0]) return true;

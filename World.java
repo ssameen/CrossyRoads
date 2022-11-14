@@ -12,6 +12,11 @@ public abstract class World extends Rectangle{
         this.height = 100;
     }
 
+    public int rMove(){
+        return 0;
+    }
+
+
     public boolean isDanger() {
         return danger;
     }
