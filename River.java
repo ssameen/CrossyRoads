@@ -24,7 +24,7 @@ public class River extends World {
     private Obstacle[] generateLog() {
         Obstacle[] arrayOb = new Obstacle[nObjects];
         for ( int i = 0; i < nObjects; i++) {
-            Obstacle log = new Obstacle(300, this.y, logW, true, false, "TEMP"); //  canStep = true, willDie = false
+            Obstacle log = new Obstacle(300, this.y, logW, true, false, "Icons/log.png"); //  canStep = true, willDie = false
             arrayOb[i] = log;
         }
         return arrayOb;

@@ -19,7 +19,7 @@ public class Game extends JComponent implements KeyListener {
     NodeQueue enviro = new NodeQueue();
 
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
@@ -27,18 +27,22 @@ public class Game extends JComponent implements KeyListener {
         if(!death) {
             try {
                 paintWorlds(g2);
+                scoreText(g2);
+                paintObstacles(g2);
+                playerPaint(g2);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            scoreText(g2);
-            paintObstacles(g2);
-            playerPaint(g2);
         }else{
-            paintDeath(g2);
+            try {
+                paintDeath(g2);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    private void paintDeath(Graphics2D g2) {
+    private void paintDeath(Graphics2D g2) throws IOException {
         g2.setColor(Color.black);
         Font f = new Font(Font.SERIF, Font.BOLD, 120);
         g2.setFont(f);
@@ -46,12 +50,15 @@ public class Game extends JComponent implements KeyListener {
         g2.drawString("You Scored", 0, 300);
         f = new Font(Font.SERIF, Font.BOLD, 200);
         g2.setFont(f);
-        g2.drawString(""+score, 250, 550);
+        g2.drawString(""+score, 250, 500);
+        BufferedImage playerImage = ImageIO.read(new File("Icons/deathChicken.png"));
+        g2.drawImage(playerImage, 220, 570, 150, 150, this);
     }
 
-    public void playerPaint(Graphics2D g2){
-        g2.setColor(Color.red);
-        g2.fillRect(chicken.getX(), enviro.getSize()*100-(playerPosition*100)+100, 100, 100);
+    public void playerPaint(Graphics2D g2) throws IOException {
+        BufferedImage playerImage = ImageIO.read(new File(chicken.getImagePath()));
+        g2.drawImage(playerImage, chicken.getX() + 10, enviro.getSize()*100-(playerPosition*100)+100, 80, 80, this);
+
     }
 
     public void scoreText(Graphics2D g2){
@@ -70,15 +77,15 @@ public class Game extends JComponent implements KeyListener {
         }
     }
 
-    void paintObstacles(Graphics2D g2){
+    void paintObstacles(Graphics2D g2) throws IOException {
         for(int i = 0; i < enviro.getSize(); i++){
             World now = enviro.check(i);
 
             Obstacle[] obs = now.getObstacles();
             for (Obstacle o : obs) {
                 if(!(o==null)) {
-                    g2.setColor(Color.darkGray);
-                    g2.fillRect(o.getX(), enviro.getSize() * now.height - (i * 100) + 100, 100, 100);
+                    BufferedImage obstacleImage = ImageIO.read(new File(o.getImagePath()));
+                    g2.drawImage(obstacleImage, o.getX(), enviro.getSize() * now.height - (i * 100) + 100, 100, 100, this);
                 }
             }
         }

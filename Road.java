@@ -22,7 +22,7 @@ public class Road extends World {
     private Obstacle[] generateCar() {
         Obstacle[] arrayCar = new Obstacle[nCar];
         for (int i = 0; i < nCar; i ++) {
-            Obstacle car = new Obstacle(-carW, this.y, carW, false, true, "TEMP"); // willDie = true, canStep = true? or false?
+            Obstacle car = new Obstacle(-carW, this.y, carW, false, true, "Icons/car.png"); // willDie = true, canStep = true? or false?
             arrayCar[i] = car;
         }
         return arrayCar;

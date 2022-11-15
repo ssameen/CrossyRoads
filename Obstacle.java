@@ -58,4 +58,8 @@ public class Obstacle{
     public boolean checkDeath(Player player){
         return willDie && checkCollision(player);
     }
+
+    public String getImagePath() {
+        return imagePath;
+    }
 }

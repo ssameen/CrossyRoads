@@ -5,7 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9145fd30-ea9c-486d-86f0-a72a1a05c9ab" name="Changes" comment="river code">
+      <change afterPath="$PROJECT_DIR$/Icons/empty.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/Empty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Forest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Forest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Railroad.java" beforeDir="false" afterPath="$PROJECT_DIR$/Railroad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/River.java" beforeDir="false" afterPath="$PROJECT_DIR$/River.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Road.java" beforeDir="false" afterPath="$PROJECT_DIR$/Road.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Forest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Forest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Railroad.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Railroad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/River.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/River.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/Road.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/Road.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CrossyRoads/World.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

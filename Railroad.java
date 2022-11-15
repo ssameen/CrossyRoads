@@ -21,7 +21,7 @@ public class Railroad extends World {
     private Obstacle[] generateTrain() {
         Obstacle[] arrayTrain = new Obstacle[1];
         for (int i = 0; i < nTrain; i ++) {
-            Obstacle train = new Obstacle(-trainW, this.y, trainW, false, true, "TEMP"); // canStep = false, willDie = true
+            Obstacle train = new Obstacle(-trainW, this.y, trainW, false, true, "Icons/train.png"); // canStep = false, willDie = true
             arrayTrain[i] = train;
         }
         return arrayTrain;

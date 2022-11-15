@@ -28,7 +28,7 @@ public class Forest extends World {
         Random rand = new Random();
         //make between 3 and 5 trees
         for (int i = 0; i < rand.nextInt(3,this.width/100); i++) {
-            Obstacle tree = new Obstacle(positionX[i] * 100, this.y, treeSize, false, false, "TEMP"); // canStep = false, willDie = false
+            Obstacle tree = new Obstacle(positionX[i] * 100, this.y, treeSize, false, false, "Icons/tree.png"); // canStep = false, willDie = false
             ObstacleArray[i] = tree;
         }
         return ObstacleArray;

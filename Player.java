@@ -28,4 +28,8 @@ public class Player extends Square {
     public Square getSquare(){
         return new Square(x, y, size);
     }
+
+    public String getImagePath() {
+        return "Icons/chicken.png";
+    }
 }
