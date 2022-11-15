@@ -9,7 +9,7 @@ public class Forest extends World {
     public Forest(double initialHeight) {
         super(initialHeight);
         this.setDanger(false);
-        this.setBackground(Color.green);
+        this.setBackground("Icons/forest.png");
         this.setObstacles(generateTrees());
     }
 

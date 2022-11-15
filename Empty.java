@@ -9,7 +9,7 @@ public class Empty extends World{
             Obstacle[] o = new Obstacle[0];
             this.setObstacles(o);
             this.setDanger(false);
-            this.setBackground(Color.green);
+            this.setBackground("Icons/empty.png");
 
 
     }

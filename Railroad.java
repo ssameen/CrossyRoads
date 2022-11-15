@@ -10,12 +10,11 @@ public class Railroad extends World {
     public Railroad(double initialHeight) {
         super(initialHeight);
         this.setDanger(false);
-        this.setBackground(Color.orange);
+        this.setBackground("Icons/tracks.png");
         this.setObstacles(generateTrain());
         SplittableRandom rand = new SplittableRandom();
         int num = rand.nextInt(2);
-        if (num == 0) {trainDirect = 0;}
-        else if (num==1) {trainDirect = 1;}
+        trainDirect = (num==0)? 0:1;
     }
 
     // add train to Railroad

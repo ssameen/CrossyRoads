@@ -1,9 +1,13 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import java.io.File;
 
 public class Game extends JComponent implements KeyListener {
     Random rand = new Random();
@@ -21,7 +25,11 @@ public class Game extends JComponent implements KeyListener {
 
         g2.setStroke(new BasicStroke(3));
         if(!death) {
-            paintWorlds(g2);
+            try {
+                paintWorlds(g2);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             scoreText(g2);
             paintObstacles(g2);
             playerPaint(g2);
@@ -52,11 +60,13 @@ public class Game extends JComponent implements KeyListener {
         g2.setColor(Color.black);
         g2.drawString(""+score, 300, 75);
     }
-    public void paintWorlds(Graphics2D g2){
+    public void paintWorlds(Graphics2D g2) throws IOException {
         for(int i =0; i < enviro.getSize(); i++){
             World now = enviro.check(i);
-            g2.setColor(now.getBackground());
-            g2.fillRect(now.x, enviro.getSize()*now.height-(i*100)+100, now.width, now.height);
+            BufferedImage backgroundImage = ImageIO.read(new File(now.getBackground()));
+            for (int j =0; j < 6; j++) { // 6 tiles hardcoded for now
+                g2.drawImage(backgroundImage, j*100, enviro.getSize()*now.height-(i*100)+100, 100, 100, this);
+            }
         }
     }
 

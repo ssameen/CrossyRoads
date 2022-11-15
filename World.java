@@ -2,7 +2,7 @@ import java.awt.*;
 
 public abstract class World extends Rectangle{
     private Obstacle[] obstacles;
-    private Color background;
+    private String background;
     private boolean danger;
     int y;
 
@@ -36,12 +36,12 @@ public abstract class World extends Rectangle{
     public Obstacle[] getObstacles() {return obstacles;}
 
     // set color for world
-    protected void setBackground(Color background) {
+    protected void setBackground(String background) {
         this.background = background;
     }
 
     // get color for world
-    public Color getBackground() {return background;}
+    public String getBackground() {return background;}
 
      //move obstacles along with world, and override to move obstacle horizontally in subclasses if needed
     public void moveObstacle() {

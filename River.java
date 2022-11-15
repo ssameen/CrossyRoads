@@ -10,7 +10,7 @@ public class River extends World {
     public River(double initialHeight) {
         super(initialHeight);
         this.setDanger(true);
-        this.setBackground(Color.blue);
+        this.setBackground("Icons/river.png");
         this.setObstacles(generateLog());
         SplittableRandom rand = new SplittableRandom();
         int num = rand.nextInt(2);
