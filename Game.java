@@ -78,8 +78,12 @@ public class Game extends JComponent implements KeyListener {
         this.addKeyListener(this);
         setFocusable(true);
         requestFocus();
-        for(int i =0; i<6;i++){
-            World next = newWorld(lastWorld, 5.5 - i);
+        for(int i =0; i<3;i++){
+            World next = new Empty(5.5-i);
+            enviro.enqueue(next);
+        }
+        for(int i =0; i<3;i++){
+            World next = newWorld(lastWorld, 5.5 - i+3);
             enviro.enqueue(next);
         }
     }
@@ -114,6 +118,9 @@ public class Game extends JComponent implements KeyListener {
 
         this.repaint();
         if(playerPosition <0){
+            death= true;
+        }
+        if(chicken.getX() <-1 || chicken.getX()>599){
             death= true;
         }
 

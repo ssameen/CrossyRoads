@@ -24,7 +24,7 @@ public class River extends World {
     private Obstacle[] generateLog() {
         Obstacle[] arrayOb = new Obstacle[nObjects];
         for ( int i = 0; i < nObjects; i++) {
-            Obstacle log = new Obstacle(-logW, this.y, logW, true, false, "TEMP"); //  canStep = true, willDie = false
+            Obstacle log = new Obstacle(300, this.y, logW, true, false, "TEMP"); //  canStep = true, willDie = false
             arrayOb[i] = log;
         }
         return arrayOb;
@@ -34,20 +34,24 @@ public class River extends World {
     private void moveLogR() {
         Obstacle log = this.getObstacles()[0];
         int currentX = log.getX();
-        if (currentX >= log.getSize() + this.width) {
+        currentX += this.logXD;
+        if (currentX >=599) {
             currentX = 0;
         }
-        log.setX(( currentX += this.logXD));
+        log.setX(currentX);
+
     }
 
     // move from right to left
     private void moveLogL() {
         Obstacle log = this.getObstacles()[0];
         int currentX = log.getX();
-        if (currentX <= -log.getSize()) {
-            currentX = this.width;
+        currentX -= this.logXD;
+        if (currentX < 0) {
+            currentX = this.width-100;
         }
-        log.setX(currentX -= this.logXD);
+        log.setX(currentX);
+
     }
 
     @Override
